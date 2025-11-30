@@ -21,6 +21,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.data.provider.SortDirection;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ import ru.akkarin.is_lab2.dto.LocationDTO;
 import ru.akkarin.is_lab2.dto.PersonDTO;
 import ru.akkarin.is_lab2.enm.Color;
 import ru.akkarin.is_lab2.enm.Country;
+import ru.akkarin.is_lab2.service.AuthService;
 import ru.akkarin.is_lab2.service.PersonService;
 
 import java.util.Arrays;
@@ -37,11 +39,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import com.vaadin.flow.router.BeforeEnterObserver;
 
 @Route("main")
 @CssImport("./styles/shared-styles.css")
 @RequiredArgsConstructor
-public class MainView extends VerticalLayout {
+public class MainView extends VerticalLayout implements BeforeEnterObserver {
 
     private final PersonService personService;
     private final Grid<PersonDTO> grid = new Grid<>(PersonDTO.class, false);
@@ -54,14 +57,46 @@ public class MainView extends VerticalLayout {
     private boolean currentSortAscending = true;
     private long totalSize = 0;
 
+    private final AuthService authService;
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
+        if (!authService.isAuthenticated()) {
+            beforeEnterEvent.forwardTo("login");
+        }
+    }
 
     @PostConstruct
     public void init() {
+        HorizontalLayout userBar = new HorizontalLayout();
+        userBar.setWidthFull();
+        userBar.setJustifyContentMode(JustifyContentMode.END);
+        userBar.setAlignItems(Alignment.CENTER);
+
+        String username = authService.getCurrentUsername().orElse("Unknown");
+        Div userLabel = new Div();
+        userLabel.setText("Вошёл как: " + username);
+        userLabel.getStyle().set("font-weight", "bold");
+        userLabel.getStyle().set("margin-right", "10px");
+
+        Button logoutButton = new Button("Logout");
+        logoutButton.addClickListener(e -> {
+            authService.logout();
+            getUI().ifPresent(ui -> ui.navigate("login"));
+        });
+
+        userBar.add(userLabel, logoutButton);
+
         setupGridColumns();
 
-        Button addButton = new Button(new Icon(VaadinIcon.PLUS));
-        addButton.setTooltipText("Добавить нового человека");
-        addButton.addClickListener(e -> openAddDialog());
+//        Button addButton = new Button(new Icon(VaadinIcon.PLUS));
+//        addButton.setTooltipText("Добавить нового человека");
+//        addButton.addClickListener(e -> openAddDialog());
+//
+//        Button importButton = new Button("Импортировать");
+//        importButton.addClickListener(e -> UI.getCurrent().navigate("import"));
+//        importButton.getStyle().set("margin-left", "10px");
+//
 
         grid.setItems(query -> {
             int ignoredOffset = query.getOffset();
@@ -110,7 +145,7 @@ public class MainView extends VerticalLayout {
         contentLayout.setPadding(true);
         contentLayout.setSpacing(true);
         contentLayout.setWidthFull();
-        contentLayout.add(createFilterLayout(), grid, createPaginationLayout());
+        contentLayout.add(userBar, createFilterLayout(), grid, createPaginationLayout());
 
         Div contentContainer = new Div(contentLayout);
         contentContainer.addClassName("content-container");
@@ -581,7 +616,10 @@ public class MainView extends VerticalLayout {
         addButton.setTooltipText("Add new person");
         addButton.addClickListener(e -> openAddDialog());
 
-        filterLayout.add(filterField, clearFilterButton, addButton);
+        Button importButton = new Button("Import new persons");
+        importButton.addClickListener(e -> UI.getCurrent().navigate("import"));
+
+        filterLayout.add(filterField, clearFilterButton, addButton, importButton);
         return filterLayout;
     }
 

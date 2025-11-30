@@ -1,0 +1,87 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+:host {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.login-background {
+    background-image: url('../images/persona3new.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+vaadin-text-field::part(input-field),
+vaadin-password-field::part(input-field) {
+    background-color: white !important;
+    color: #333 !important;
+    border-radius: 6px !important;
+}
+
+.login-container vaadin-button {
+    background-color: white !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-container vaadin-button:hover {
+    background-color: #f0f0f0 !important;
+    transform: translateY(-2px);
+}
+
+.login-container .login-link {
+    margin-top: 15px;
+    font-size: 13px;
+    color: var(--lumo-primary-text-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+}

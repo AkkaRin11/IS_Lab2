@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+    <person>
+        <name>Сашка ББ</name>
+        <height>180.0</height>
+        <eyeColor>RED</eyeColor>
+        <hairColor>BROWN</hairColor>
+        <nationality>USA</nationality>
+        <coordinates>
+            <x>100.5</x>
+            <y>50.0</y>
+        </coordinates>
+        <location>
+            <name>New York</name>
+            <x>40.7128</x>
+            <y>-74.0060</y>
+        </location>
+    </person>
+
+    <person>
+        <name>Сашка КК</name>
+        <height>165.0</height>
+        <eyeColor>BLACK</eyeColor>
+        <hairColor>RED</hairColor>
+        <nationality>UNITED_KINGDOM</nationality>
+        <coordinates>
+            <x>200.0</x>
+            <y>30.5</y>
+        </coordinates>
+        <location>
+            <name>London</name>
+            <x>51.5074</x>
+            <y>-0.1278</y>
+        </location>
+    </person>
+</persons>

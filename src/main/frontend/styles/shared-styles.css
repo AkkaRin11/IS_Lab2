@@ -39,7 +39,6 @@ html, body {
     margin: 0 auto !important;
 }
 
-/* Убедимся, что Vaadin Grid тоже прозрачный */
 vaadin-grid {
     background: transparent !important;
 }
@@ -82,13 +81,11 @@ vaadin-select::part(input-field) {
     margin-bottom: 10px !important;
 }
 
-/* Стили для обязательных полей */
 [required]::part(label)::after {
     content: " *";
     color: red;
 }
 
-/* Стили для невалидных полей */
 [invalid]::part(input-field) {
     border-color: #dc3545 !important;
     background-color: #fff5f5 !important;

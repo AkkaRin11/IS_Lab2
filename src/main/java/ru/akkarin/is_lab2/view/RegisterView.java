@@ -1,12 +1,12 @@
-// ru.akkarin.is_lab2.view.RegisterView
 package ru.akkarin.is_lab2.view;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
@@ -16,13 +16,21 @@ import ru.akkarin.is_lab2.service.UserService;
 
 @Route("register")
 @AnonymousAllowed
-public class RegisterView extends VerticalLayout {
+@CssImport("./styles/shared-styles-login.css")
+public class RegisterView extends Div {
+
+    private final UserService userService;
 
     public RegisterView(UserService userService) {
-        setAlignItems(Alignment.CENTER);
-        setSpacing(true);
+        this.userService = userService;
 
-        add(new H2("Регистрация"));
+        Div background = new Div();
+        background.addClassName("login-background");
+
+        Div container = new Div();
+        container.addClassName("login-container");
+
+        H2 title = new H2("Регистрация");
 
         TextField username = new TextField("Имя пользователя");
         username.setRequired(true);
@@ -30,24 +38,38 @@ public class RegisterView extends VerticalLayout {
         PasswordField password = new PasswordField("Пароль");
         password.setRequired(true);
 
-        Select<Role> role = new Select<>();
-        role.setLabel("Роль");
-        role.setItems(Role.USER, Role.ADMIN);
-        role.setValue(Role.USER);
+        PasswordField confirmPassword = new PasswordField("Подтвердите пароль");
+        confirmPassword.setRequired(true);
 
-        Button registerBtn = new Button("Зарегистрироваться", event -> {
+        Button registerBtn = new Button("Зарегистрироваться", e -> {
+            String user = username.getValue();
+            String pass = password.getValue();
+            String confirm = confirmPassword.getValue();
+
+            if (!pass.equals(confirm)) {
+                Notification.show("Пароли не совпадают");
+                return;
+            }
+
             try {
-                userService.register(username.getValue(), password.getValue(), role.getValue());
-                Notification.show("Регистрация успешна! Теперь войдите.");
+                userService.registerUser(user, pass);
+                Notification.show("Пользователь зарегистрирован");
                 getUI().ifPresent(ui -> ui.navigate("login"));
-            } catch (Exception e) {
-                Notification.show("Ошибка: " + e.getMessage(), 3000, Notification.Position.MIDDLE);
+            } catch (IllegalArgumentException ex) {
+                Notification.show(ex.getMessage());
             }
         });
 
-        FormLayout form = new FormLayout(username, password, role);
-        form.setWidth("300px");
+        Span goToLogin = new Span("Уже есть аккаунт? Войти");
+        goToLogin.getStyle().set("color", "#0d6efd");
+        goToLogin.getStyle().set("text-decoration", "underline");
+        goToLogin.getStyle().set("cursor", "pointer");
 
-        add(form, registerBtn);
+        goToLogin.addClickListener(e -> getUI().ifPresent(ui -> ui.navigate("login")));
+
+
+        container.add(title, username, password, confirmPassword, registerBtn, goToLogin);
+        background.add(container);
+        add(background);
     }
 }
