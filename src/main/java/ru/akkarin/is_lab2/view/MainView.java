@@ -38,7 +38,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-@Route("")
+@Route("main")
 @CssImport("./styles/shared-styles.css")
 @RequiredArgsConstructor
 public class MainView extends VerticalLayout {
