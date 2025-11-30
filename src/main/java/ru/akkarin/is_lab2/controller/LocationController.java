@@ -1,15 +1,8 @@
-package ru.akkarin.is_lab2.contoller;
+package ru.akkarin.is_lab2.controller;
 
 import lombok.RequiredArgsConstructor;
-import ru.akkarin.is_lab2.domain.Location;
-import ru.akkarin.is_lab2.dto.LocationDTO;
-import ru.akkarin.is_lab2.dto.LocationDTO;
 import ru.akkarin.is_lab2.service.LocationService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/location")

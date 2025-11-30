@@ -6,6 +6,7 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import ru.akkarin.is_lab2.domain.ImportHistory;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,5 +86,14 @@ public class ImportHistoryRepository {
         );
         query.setParameter("username", username);
         return query.getResultList();
+    }
+
+    public boolean existsByTimestamp(LocalDateTime timestamp) {
+        TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(h) FROM ImportHistory h WHERE h.timestamp = :timestamp", Long.class
+        );
+        query.setParameter("timestamp", timestamp);
+        Long count = query.getSingleResult();
+        return count != null && count > 0;
     }
 }

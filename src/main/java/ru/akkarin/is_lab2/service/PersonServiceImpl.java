@@ -31,6 +31,9 @@ public class PersonServiceImpl implements PersonService {
     @Transactional
     public PersonDTO createPerson(PersonDTO personDTO) {
         Person person = personMapper.toEntity(personDTO);
+
+        validateJackLondonNationality(person);
+
         return personMapper.toDto(personRepository.save(person));
     }
 
@@ -47,6 +50,8 @@ public class PersonServiceImpl implements PersonService {
         existingPerson.setLocation(locationMapper.toEntity(personDTO.getLocation()));
         existingPerson.setHeight(personDTO.getHeight());
         existingPerson.setNationality(personDTO.getNationality());
+
+        validateJackLondonNationality(existingPerson);
 
         Person updatedPerson = personRepository.save(existingPerson);
         return personMapper.toDto(updatedPerson);
@@ -86,17 +91,13 @@ public class PersonServiceImpl implements PersonService {
         List<PersonDTO> all = findAllPersons();
 
         Stream<PersonDTO> stream = all.stream();
-
-        // Фильтрация (регистронезависимая подстрока)
         if (filter != null && !filter.trim().isEmpty()) {
             String f = filter.trim().toLowerCase();
             stream = stream.filter(p -> matchesFilter(p, f));
         }
 
-        // Сортировка
         stream = stream.sorted((p1, p2) -> compareByProperty(p1, p2, sortProperty, sortAscending));
 
-        // Пагинация
         return stream
                 .skip(offset)
                 .limit(limit)
@@ -220,5 +221,11 @@ public class PersonServiceImpl implements PersonService {
             return 0;
         }
         return personRepository.findByHairColorAndLocationName(hairColor, locationName.trim()).size();
+    }
+
+    private void validateJackLondonNationality(Person person) {
+        if ("Jack London".equals(person.getName()) && person.getNationality() != Country.UNITED_KINGDOM) {
+            throw new IllegalArgumentException("Jack London can only have nationality UNITED_KINGDOM");
+        }
     }
 }

@@ -18,13 +18,21 @@ public class ImportHistoryService {
 
     @Transactional
     public void recordHistory(String username, boolean success, int importedCount) {
+        LocalDateTime now = LocalDateTime.now();
+
+        if (repository.existsByTimestamp(now)) {
+            throw new IllegalArgumentException("An import history record with this exact timestamp already exists");
+        }
+
         ImportHistory history = new ImportHistory();
         history.setUsername(username);
         history.setStatus(success ? ImportStatus.SUCCESS : ImportStatus.FAILURE);
         history.setImportedCount(importedCount);
-        history.setTimestamp(LocalDateTime.now());
+        history.setTimestamp(now);
+
         repository.save(history);
     }
+
 
     public List<ImportHistory> getHistory(String username, boolean isAdmin) {
         if (isAdmin) {

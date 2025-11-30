@@ -103,11 +103,11 @@ public class ImportView extends VerticalLayout implements BeforeEnterObserver {
         container.add(title, upload, actions);
 
         historyGrid = new Grid<>(ImportHistory.class, false);
-        historyGrid.addColumn(ImportHistory::getId).setHeader("ID").setAutoWidth(true);
-        historyGrid.addColumn(ImportHistory::getUsername).setHeader("Пользователь").setAutoWidth(true);
-        historyGrid.addColumn(ImportHistory::getStatus).setHeader("Статус").setAutoWidth(true);
-        historyGrid.addColumn(ImportHistory::getImportedCount).setHeader("Добавлено объектов").setAutoWidth(true).setFlexGrow(1);
-        historyGrid.addColumn(ImportHistory::getTimestamp).setHeader("Время").setAutoWidth(true);
+        historyGrid.addColumn(ImportHistory::getId).setHeader("ID").setAutoWidth(true).setSortable(true);
+        historyGrid.addColumn(ImportHistory::getUsername).setHeader("Пользователь").setAutoWidth(true).setSortable(true);
+        historyGrid.addColumn(ImportHistory::getStatus).setHeader("Статус").setAutoWidth(true).setSortable(true);
+        historyGrid.addColumn(ImportHistory::getImportedCount).setHeader("Добавлено объектов").setAutoWidth(true).setFlexGrow(2).setSortable(true);
+        historyGrid.addColumn(ImportHistory::getTimestamp).setHeader("Время").setAutoWidth(true).setSortable(true);
 
         historyGrid.setWidthFull();
         refreshHistoryGrid();
