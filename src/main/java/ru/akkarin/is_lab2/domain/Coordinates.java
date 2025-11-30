@@ -1,4 +1,4 @@
-package org.example.ic_lab1.domain;
+package ru.akkarin.is_lab2.domain;
 
 
 import jakarta.persistence.*;

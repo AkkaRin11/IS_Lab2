@@ -33,3 +33,13 @@ build/
 .vscode/
 
 src/main/resources/application.properties
+src/main/frontend/generated/
+src/main/bundles
+package.json
+package-lock.json
+tsconfig.json
+types.d.ts
+vite.config.ts
+vite.config.ts.timestamp-1764512944232-a7c4956fef31f.mjs
+vite.generated.ts
+node_modules/

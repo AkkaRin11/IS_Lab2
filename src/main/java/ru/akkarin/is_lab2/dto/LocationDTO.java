@@ -1,4 +1,4 @@
-package org.example.ic_lab1.dto;
+package ru.akkarin.is_lab2.dto;
 
 import lombok.Data;
 

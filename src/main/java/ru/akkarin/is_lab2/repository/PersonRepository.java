@@ -1,9 +1,9 @@
-package org.example.ic_lab1.repository;
+package ru.akkarin.is_lab2.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.example.ic_lab1.domain.Person;
+import ru.akkarin.is_lab2.domain.Person;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -64,7 +64,7 @@ public class PersonRepository {
         return query.getResultList();
     }
 
-    public List<Person> findByHairColor(org.example.ic_lab1.enm.Color hairColor) {
+    public List<Person> findByHairColor(ru.akkarin.is_lab2.enm.Color hairColor) {
         if (hairColor == null) {
             return List.of();
         }
@@ -76,7 +76,7 @@ public class PersonRepository {
     }
 
     public List<Person> findByHairColorAndLocationName(
-            org.example.ic_lab1.enm.Color hairColor,
+            ru.akkarin.is_lab2.enm.Color hairColor,
             String locationName
     ) {
         if (hairColor == null || locationName == null) {

@@ -1,10 +1,10 @@
-package org.example.ic_lab1.service;
+package ru.akkarin.is_lab2.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.ic_lab1.domain.Coordinates;
-import org.example.ic_lab1.dto.CoordinatesDTO;
-import org.example.ic_lab1.mapper.CoordinatesMapper;
-import org.example.ic_lab1.repository.CoordinatesRepository;
+import ru.akkarin.is_lab2.domain.Coordinates;
+import ru.akkarin.is_lab2.dto.CoordinatesDTO;
+import ru.akkarin.is_lab2.mapper.CoordinatesMapper;
+import ru.akkarin.is_lab2.repository.CoordinatesRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,8 +1,8 @@
-package org.example.ic_lab1.contoller;
+package ru.akkarin.is_lab2.contoller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.ic_lab1.dto.PersonDTO;
-import org.example.ic_lab1.service.PersonService;
+import ru.akkarin.is_lab2.dto.PersonDTO;
+import ru.akkarin.is_lab2.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

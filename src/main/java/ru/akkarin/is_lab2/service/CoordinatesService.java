@@ -1,6 +1,6 @@
-package org.example.ic_lab1.service;
+package ru.akkarin.is_lab2.service;
 
-import org.example.ic_lab1.dto.CoordinatesDTO;
+import ru.akkarin.is_lab2.dto.CoordinatesDTO;
 
 import java.util.List;
 

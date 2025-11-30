@@ -1,4 +1,4 @@
-package org.example.ic_lab1.view;
+package ru.akkarin.is_lab2.view;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.DetachEvent;
@@ -24,12 +24,12 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.example.ic_lab1.dto.CoordinatesDTO;
-import org.example.ic_lab1.dto.LocationDTO;
-import org.example.ic_lab1.dto.PersonDTO;
-import org.example.ic_lab1.enm.Color;
-import org.example.ic_lab1.enm.Country;
-import org.example.ic_lab1.service.PersonService;
+import ru.akkarin.is_lab2.dto.CoordinatesDTO;
+import ru.akkarin.is_lab2.dto.LocationDTO;
+import ru.akkarin.is_lab2.dto.PersonDTO;
+import ru.akkarin.is_lab2.enm.Color;
+import ru.akkarin.is_lab2.enm.Country;
+import ru.akkarin.is_lab2.service.PersonService;
 
 import java.util.Arrays;
 import java.util.Map;

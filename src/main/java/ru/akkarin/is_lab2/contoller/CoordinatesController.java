@@ -1,9 +1,9 @@
-package org.example.ic_lab1.contoller;
+package ru.akkarin.is_lab2.contoller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.ic_lab1.dto.CoordinatesDTO;
-import org.example.ic_lab1.service.CoordinatesService;
-import org.example.ic_lab1.service.CoordinatesService;
+import ru.akkarin.is_lab2.dto.CoordinatesDTO;
+import ru.akkarin.is_lab2.service.CoordinatesService;
+import ru.akkarin.is_lab2.service.CoordinatesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

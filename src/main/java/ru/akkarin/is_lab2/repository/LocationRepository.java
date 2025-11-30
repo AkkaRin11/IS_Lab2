@@ -1,9 +1,9 @@
-package org.example.ic_lab1.repository;
+package ru.akkarin.is_lab2.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.example.ic_lab1.domain.Location;
+import ru.akkarin.is_lab2.domain.Location;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

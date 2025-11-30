@@ -1,4 +1,4 @@
-package org.example.ic_lab1.enm;
+package ru.akkarin.is_lab2.enm;
 
 public enum Color {
     RED,

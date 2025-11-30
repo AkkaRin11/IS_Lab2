@@ -1,7 +1,7 @@
-package org.example.ic_lab1.service;
+package ru.akkarin.is_lab2.service;
 
-import org.example.ic_lab1.domain.Location;
-import org.example.ic_lab1.dto.LocationDTO;
+import ru.akkarin.is_lab2.domain.Location;
+import ru.akkarin.is_lab2.dto.LocationDTO;
 
 import java.util.List;
 

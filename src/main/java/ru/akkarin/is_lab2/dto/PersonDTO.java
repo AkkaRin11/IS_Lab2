@@ -1,8 +1,8 @@
-package org.example.ic_lab1.dto;
+package ru.akkarin.is_lab2.dto;
 
 import lombok.Data;
-import org.example.ic_lab1.enm.Color;
-import org.example.ic_lab1.enm.Country;
+import ru.akkarin.is_lab2.enm.Color;
+import ru.akkarin.is_lab2.enm.Country;
 
 @Data
 public class PersonDTO {

@@ -1,7 +1,7 @@
-package org.example.ic_lab1.mapper;
+package ru.akkarin.is_lab2.mapper;
 
-import org.example.ic_lab1.domain.Person;
-import org.example.ic_lab1.dto.PersonDTO;
+import ru.akkarin.is_lab2.domain.Person;
+import ru.akkarin.is_lab2.dto.PersonDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 

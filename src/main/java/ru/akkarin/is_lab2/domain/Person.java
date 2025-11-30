@@ -1,9 +1,9 @@
-package org.example.ic_lab1.domain;
+package ru.akkarin.is_lab2.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.example.ic_lab1.enm.Color;
-import org.example.ic_lab1.enm.Country;
+import ru.akkarin.is_lab2.enm.Color;
+import ru.akkarin.is_lab2.enm.Country;
 
 import java.util.Date;
 
@@ -24,7 +24,7 @@ public class Person {
     private Coordinates coordinates; //Поле не может быть null
 
     @Column(name = "creationDate", nullable = false)
-    private java.util.Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
     @Enumerated(EnumType.STRING)
     @Column(name = "eyeColor", nullable = false)

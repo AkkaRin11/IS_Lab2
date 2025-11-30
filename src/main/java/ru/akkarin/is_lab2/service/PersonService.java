@@ -1,8 +1,8 @@
-package org.example.ic_lab1.service;
+package ru.akkarin.is_lab2.service;
 
-import org.example.ic_lab1.dto.PersonDTO;
-import org.example.ic_lab1.enm.Color;
-import org.example.ic_lab1.enm.Country;
+import ru.akkarin.is_lab2.dto.PersonDTO;
+import ru.akkarin.is_lab2.enm.Color;
+import ru.akkarin.is_lab2.enm.Country;
 
 import java.util.List;
 import java.util.Map;

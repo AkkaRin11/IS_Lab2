@@ -1,9 +1,9 @@
-package org.example.ic_lab1.mapper;
+package ru.akkarin.is_lab2.mapper;
 
-import org.example.ic_lab1.domain.Coordinates;
-import org.example.ic_lab1.domain.Location;
-import org.example.ic_lab1.dto.CoordinatesDTO;
-import org.example.ic_lab1.dto.LocationDTO;
+import ru.akkarin.is_lab2.domain.Coordinates;
+import ru.akkarin.is_lab2.domain.Location;
+import ru.akkarin.is_lab2.dto.CoordinatesDTO;
+import ru.akkarin.is_lab2.dto.LocationDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
